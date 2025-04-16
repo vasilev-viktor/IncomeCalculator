@@ -1,9 +1,8 @@
 package org.example.Calculator;
 
-public class GeneralCalculations {
+public abstract class GeneralCalculations {
 
-    // advance - аванс да/нет
-    // salary - зарплата
+    // salary - зарплата/ сумму которую вводишь изначально
     // loans - кредиты
     // communal - коммуналка
     // savingsForRepairs - ремонт
@@ -13,7 +12,6 @@ public class GeneralCalculations {
     // sports - спорт (качалка, забеги, гонки, походы)
     // additionalExpenses - дополнительные расходы (ДР, ремонт машины, бензин, проезд, одежда)
 
-    boolean advance;
     int salary;
     int loans = 32000;
     int communal = 6000;
@@ -26,13 +24,20 @@ public class GeneralCalculations {
     int balance;
 
 
-    public GeneralCalculations(int salary, int additionalExpenses) {
+
+    public GeneralCalculations(int salary) {
         this.salary = salary;
-        this.additionalExpenses = additionalExpenses;
+        this.balance = salary;
+
     }
 
-    // Класс subtractionBasic отражает все расходы, можно вписать сумму и узнать сколько останется после всех расходов
+    // Метод отвечает за введение доп расходов руками
+    public int putEnteringAdditionalCosts(int additionalExpenses){
+        return additionalExpenses;
+    }
 
+
+    // Класс subtractionBasic отражает все расходы, можно вписать сумму и узнать сколько останется после всех расходов
     public void subtractionBasic() {
         int amountConsumables = loans + communal + food + additionalExpenses + sports + entertainment;
         System.out.println("Посчитать");
@@ -44,8 +49,9 @@ public class GeneralCalculations {
             System.out.println("Остаток зарплаты за вычетом расходников: " + balance);
         }
     }
+
     // Метод отвечает за вычисление на ремонт и сбережения
-    public void repairInterest() {
+    public void repairInterest(int balance) {
         if (balance > 0) {
             double interestRepair = 0.7;
             double savingsForRepairs = interestRepair * balance;
@@ -57,13 +63,19 @@ public class GeneralCalculations {
         }
 
     }
-    // Метод отвечает за введение доп расходов руками
-    public void enteringAdditionalCosts (int additionalExpenses){
 
+
+    public String toString() {
+        return "\nВведенная сумма: " + salary +
+                "Кредиты: " + loans +
+                "Коммуналка: " + communal +
+                "На ремонт: " + savingsForRepairs +
+                "Сбережения: " + saving +
+                "Развлечения: " + entertainment +
+                "Еда: " + food +
+                "На спорт: " + sports +
+                "Доп расходы: " + additionalExpenses;
     }
 
-    public int getBalance() {
-        return balance;
-    }
-
+    public abstract void repairInterest();
 }
