@@ -25,15 +25,9 @@ public abstract class GeneralCalculations {
 
 
 
-    public GeneralCalculations(int salary) {
+    public GeneralCalculations(int salary, int additionalExpenses) {
         this.salary = salary;
-        this.balance = salary;
-
-    }
-
-    // Метод отвечает за введение доп расходов руками
-    public int putEnteringAdditionalCosts(int additionalExpenses){
-        return additionalExpenses;
+        this.additionalExpenses = additionalExpenses;
     }
 
 

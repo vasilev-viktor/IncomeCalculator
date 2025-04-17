@@ -9,8 +9,8 @@ public class Main {
 //        calculator.subtractionBasic();
 //        calculator.repairInterest();
 
-        OneWeeksCalculator oneWeeksCalculator = new OneWeeksCalculator(100000);
-        oneWeeksCalculator.calculationFirstWeek(5000);
+        OneWeeksCalculator oneWeeksCalculator = new OneWeeksCalculator(100000, 5000);
+        oneWeeksCalculator.calculationFirstWeek();
         oneWeeksCalculator.repairInterest();
 
     }

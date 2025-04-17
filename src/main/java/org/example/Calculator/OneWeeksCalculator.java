@@ -6,17 +6,17 @@ public class OneWeeksCalculator extends GeneralCalculations implements Print {
 
     private int balanceSecondWeek;
 
-    public OneWeeksCalculator(int salary) {
-        super(salary);
+    public OneWeeksCalculator(int salary, int additionalExpenses) {
+        super(salary, additionalExpenses);
     }
 
-    public void calculationFirstWeek(int additionalExpenses) {
+    public void calculationFirstWeek() {
         int toDealSports = sports / 2;
         int loansFirstWeek = loans / 3;
         int consumablesFirstWeek = communal + toDealSports + loansFirstWeek + additionalExpenses;
         System.out.println("Сумма поступила: " + salary);
         System.out.println("Расходники за первую неделю: " + consumablesFirstWeek);
-        if (salary> consumablesFirstWeek) {
+        if (salary > consumablesFirstWeek) {
             salary -= consumablesFirstWeek;
             System.out.println("Расчеты за первую неделю (вычет расходников и доп. расходов из введенной зарплаты): " + salary);
             balanceSecondWeek = salary - consumablesFirstWeek;
