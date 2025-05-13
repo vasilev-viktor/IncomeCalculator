@@ -13,7 +13,7 @@ public abstract class GeneralCalculations {
     // additionalExpenses - дополнительные расходы (ДР, ремонт машины, бензин, проезд, одежда)
 
     int salary;
-    int loans = 32000;
+    int loans = 44000;
     int communal = 6000;
     int savingsForRepairs;
     int saving;

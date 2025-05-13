@@ -9,11 +9,19 @@ public class Main {
 //        calculator.subtractionBasic();
 //        calculator.repairInterest();
 
-        OneWeeksCalculator oneWeeksCalculator = new OneWeeksCalculator(100000, 5000);
+        OneWeeksCalculator oneWeeksCalculator = new OneWeeksCalculator(36000, 1);
         oneWeeksCalculator.calculationFirstWeek();
         oneWeeksCalculator.repairInterest();
 
     }
+//    public static int getNumber(boolean useLargeNumber) {
+//        return useLargeNumber ? 1000 : 10;
+//    }
+//
+//    public static void main(String[] args) {
+//        int num = getNumber(false);
+//        System.out.println(num);  // 100
+//    }
 
 
 
