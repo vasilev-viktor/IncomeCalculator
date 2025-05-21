@@ -1,28 +1,24 @@
 package org.example;
 
+import org.example.Calculator.Expenses;
 import org.example.Calculator.GeneralCalculations;
-import org.example.Calculator.OneWeeksCalculator;
 
 public class Main {
     public static void main(String[] args) {
-//        GeneralCalculations calculator = new GeneralCalculations(100000);
-//        calculator.subtractionBasic();
-//        calculator.repairInterest();
+        GeneralCalculations calculator1 = new GeneralCalculations(100000);
+        calculator1.subtractionBasic(new Expenses(40000, "Кредит"));
+        calculator1.subtractionBasic(new Expenses(3000, "Спорт"));
+        calculator1.repairInterest();
+        Expenses.dataExpenses(40000, "Кредит");
+        Expenses.dataExpenses(3000, "Спорт");
 
-        OneWeeksCalculator oneWeeksCalculator = new OneWeeksCalculator(36000, 1);
-        oneWeeksCalculator.calculationFirstWeek();
-        oneWeeksCalculator.repairInterest();
+
+
+
+
+
 
     }
-//    public static int getNumber(boolean useLargeNumber) {
-//        return useLargeNumber ? 1000 : 10;
-//    }
-//
-//    public static void main(String[] args) {
-//        int num = getNumber(false);
-//        System.out.println(num);  // 100
-//    }
-
 
 
 }

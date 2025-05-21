@@ -1,6 +1,7 @@
 package org.example.Calculator;
 
-public abstract class GeneralCalculations {
+public class GeneralCalculations {
+
 
     // salary - зарплата/ сумму которую вводишь изначально
     // loans - кредиты
@@ -13,30 +14,32 @@ public abstract class GeneralCalculations {
     // additionalExpenses - дополнительные расходы (ДР, ремонт машины, бензин, проезд, одежда)
 
     int salary;
-    int loans = 44000;
-    int communal = 6000;
-    int savingsForRepairs;
-    int saving;
-    int entertainment = 6000;
-    int food = 30000;
-    int sports = 4000;
-    int additionalExpenses;
     int balance;
+    int newExpensesGeneral;
+    String nameNewExpensesGeneral;
 
-
-
-    public GeneralCalculations(int salary, int additionalExpenses) {
+    public GeneralCalculations(int salary)  {
         this.salary = salary;
-        this.additionalExpenses = additionalExpenses;
+    }
+
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getSalary() {
+        return salary;
     }
 
 
     // Класс subtractionBasic отражает все расходы, можно вписать сумму и узнать сколько останется после всех расходов
-    public void subtractionBasic() {
-        int amountConsumables = loans + communal + food + additionalExpenses + sports + entertainment;
+    public void subtractionBasic(Expenses expenses) {
+
+        int amountConsumables = expenses.getNewExpenses();
+        String nameNewExpensesSubtractionBasic = expenses.getNameNewExpenses();
         System.out.println("Посчитать");
         System.out.println("Сумма поступила: " + salary);
-        System.out.println("Сумма всех ежемесячных расходников (кредиты, комуналка, еда, развлечения, спорт, доп расходы): "
+        System.out.println("Сумма всех ежемесячных расходников " + nameNewExpensesSubtractionBasic + ": "
                 + amountConsumables);
         if (amountConsumables <= salary) {
             balance = salary - amountConsumables;
@@ -45,31 +48,32 @@ public abstract class GeneralCalculations {
     }
 
     // Метод отвечает за вычисление на ремонт и сбережения
-    public void repairInterest(int balance) {
+    public void repairInterest() {
         if (balance > 0) {
             double interestRepair = 0.7;
             double savingsForRepairs = interestRepair * balance;
             double remainder = balance - savingsForRepairs;
             System.out.println("Отложить 70% от остатка на ремонт: " + savingsForRepairs);
             System.out.println("Отложить остальное на общие сбережения: " + remainder);
-        }else {
+        } else {
             System.out.println("Отложить не получится, оставшиеся сумма: " + balance);
         }
 
     }
 
 
-    public String toString() {
-        return "\nВведенная сумма: " + salary +
-                "Кредиты: " + loans +
-                "Коммуналка: " + communal +
-                "На ремонт: " + savingsForRepairs +
-                "Сбережения: " + saving +
-                "Развлечения: " + entertainment +
-                "Еда: " + food +
-                "На спорт: " + sports +
-                "Доп расходы: " + additionalExpenses;
-    }
-
-    public abstract void repairInterest();
 }
+
+
+//    public String toString() {
+//        return "\nВведенная сумма: " + salary +
+//                "Кредиты: " + loans +
+//                "Коммуналка: " + communal +
+//                "На ремонт: " + savingsForRepairs +
+//                "Сбережения: " + saving +
+//                "Развлечения: " + entertainment +
+//                "Еда: " + food +
+//                "На спорт: " + sports +
+//                "Доп расходы: " + additionalExpenses;
+//    }
+
