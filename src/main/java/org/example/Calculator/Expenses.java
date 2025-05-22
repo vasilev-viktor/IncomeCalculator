@@ -29,14 +29,9 @@ public class Expenses {
         this.nameNewExpenses = nameNewExpenses;
     }
 
-    public static ArrayList<Expenses> dataExpenses(int newExpenses, String nameNewExpenses){
-        ArrayList<Expenses> expenses = new ArrayList<Expenses>();
-        expenses.add(new Expenses(newExpenses, nameNewExpenses));
-      for (Expenses expense : expenses) {
-          System.out.println(expense);
-      }
-        return expenses;
-    }
 
 }
 
+// надо создать храниище данных
+// мап нужен чтобы создать
+// дто?
