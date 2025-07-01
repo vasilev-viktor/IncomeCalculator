@@ -1,12 +1,17 @@
 package org.example.Calculator;
 
-public class ExpensesServises {
+public class ExpensesServices {
 
-    private final ExpensesRepository expensesRepository = new ExpensesRepository();
 
-}
 
-//
+
+
+
+   }
+
+
+
+
 
 
 // приписываю методы для заполнения, данные беру в репозетории

@@ -1,22 +1,44 @@
 package org.example.Calculator;
 
-// нужно из него сделать синг тон, отвечает за хранение, поиск, удаление, взаимодействие с БД
+// нужно из него сделать сингл тон, отвечает за хранение, поиск, удаление, взаимодействие с БД
+// неужна сортировка для того чтобы вывести на экран, например по сумме
 
 import java.util.ArrayList;
 
 public class ExpensesRepository {
 
-    private ArrayList<Expenses> allExpenses = new ArrayList<>();
+    private int salary;
+    private int initialSalary;
+    private ArrayList<Expenses> expensesList;
 
-    public void addExpense(Expenses newExpense) {
-        allExpenses.add(newExpense);
-        System.out.println("Добавлен расход: " + newExpense);
+
+    public void expensesList(int initialSalary) {
+        this.salary = initialSalary;
+        this.initialSalary = initialSalary;
+        this.expensesList = new ArrayList<>();
     }
 
-    public ArrayList<Expenses> getAllExpenses() {
-        return new ArrayList<>(allExpenses);
+    public void addExpense(String nameNewExpenses, int newExpenses) {
+        expensesList.add(new Expenses(newExpenses, nameNewExpenses)); // Добавляю в список
+        salary -= newExpenses;
     }
 
-//    неужна сортировка для того чтобы вывести на экран, например по сумме
+    // Возвращает текущий остаток зарплаты
+    public int getRemainingSalary() {
+        return salary;
+    }
+    // Возвращает введенной зарплаты
+    public int getInitialSalary() {
+        return initialSalary;
+    }
 
+    public void printExpenses() {
+        System.out.println("\nЗарплата: " + getInitialSalary() + "\nСписок расходов: ");
+        for (Expenses expense : expensesList) {
+            System.out.println(expense);
+        }
+        System.out.println("\nОстаток после расходов: " + getRemainingSalary());
+    }
 }
+
+

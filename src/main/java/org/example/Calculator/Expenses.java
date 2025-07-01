@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public class Expenses {
 
+
     int newExpenses;
     String nameNewExpenses;
+
 
     public Expenses(int newExpenses, String nameNewExpenses) {
         this.newExpenses = newExpenses;
@@ -27,6 +29,12 @@ public class Expenses {
 
     public void setNameNewExpenses(String nameNewExpenses) {
         this.nameNewExpenses = nameNewExpenses;
+    }
+
+    @Override
+    public String toString() {
+        return  "\nСумма: " + newExpenses +
+                " Название: " + nameNewExpenses + '\'';
     }
 
 
