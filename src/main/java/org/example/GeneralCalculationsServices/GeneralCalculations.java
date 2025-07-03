@@ -1,18 +1,17 @@
-package org.example.Calculator;
+package org.example.GeneralCalculationsServices;
 
 public class GeneralCalculations {
 
 
-    // salary - зарплата/ сумму которую вводишь изначально
-    // loans - кредиты
-    // communal - коммуналка
-    // savingsForRepairs - ремонт
-    // saving - сбережения
-    // entertainment - развлечения
-    // food - еда
-    // sports - спорт (качалка, забеги, гонки, походы)
-    // additionalExpenses - дополнительные расходы (ДР, ремонт машины, бензин, проезд, одежда)
-    // можно еще сделать дату, чтобы запоминала когда добавляешь расход, для указания в БД
+
+
+
+    public void SavingCalculations(){
+
+
+
+    }
+
 
 //    int salary;
 //    int balance;

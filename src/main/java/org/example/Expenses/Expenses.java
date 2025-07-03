@@ -1,6 +1,4 @@
-package org.example.Calculator;
-
-import java.util.ArrayList;
+package org.example.Expenses;
 
 public class Expenses {
 
@@ -34,7 +32,7 @@ public class Expenses {
     @Override
     public String toString() {
         return  "\nСумма: " + newExpenses +
-                " Название: " + nameNewExpenses + '\'';
+                " Название: " + nameNewExpenses;
     }
 
 
