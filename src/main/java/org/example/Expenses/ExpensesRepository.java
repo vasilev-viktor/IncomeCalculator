@@ -20,7 +20,7 @@ public class ExpensesRepository {
 
     public void addExpense(String nameNewExpenses, int newExpenses) {
         expensesList.add(new Expenses(newExpenses, nameNewExpenses)); // Добавляю в список
-        salary -= newExpenses;
+//        salary -= newExpenses;
     }
 
     // Возвращает текущий остаток зарплаты

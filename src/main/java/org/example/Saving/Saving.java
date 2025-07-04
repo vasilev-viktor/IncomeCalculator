@@ -28,8 +28,7 @@ public class Saving {
 
     @Override
     public String toString() {
-        return "Сбережения" +
-                "Сумма" + newSavings +
-                "Название" + nameNewSavings;
+        return "\nСумма: " + newSavings +
+                "\n Название: " + nameNewSavings;
     }
 }
