@@ -2,19 +2,19 @@ package org.example.Saving;
 
 public class Saving {
 
-    double newSavings;
+    int newSavings;
     String nameNewSavings;
 
-    public Saving(double newSavings, String nameNewSavings) {
+    public Saving(int newSavings, String nameNewSavings) {
         this.newSavings = newSavings;
         this.nameNewSavings = nameNewSavings;
     }
 
-    public double getNewSavings() {
+    public int getNewSavings() {
         return newSavings;
     }
 
-    public void setNewSavings(double newSavings) {
+    public void setNewSavings(int newSavings) {
         this.newSavings = newSavings;
     }
 
@@ -22,13 +22,12 @@ public class Saving {
         return nameNewSavings;
     }
 
-    public void setNameNewSavings(String nameNewSavings) {
-        this.nameNewSavings = nameNewSavings;
-    }
+//    public void setNameNewSavings(String nameNewSavings) {
+//        this.nameNewSavings = nameNewSavings;
+//    }
 
     @Override
     public String toString() {
-        return "\nСумма: " + newSavings +
-                "\n Название: " + nameNewSavings;
+        return "\n% " + newSavings + " " +nameNewSavings;
     }
 }

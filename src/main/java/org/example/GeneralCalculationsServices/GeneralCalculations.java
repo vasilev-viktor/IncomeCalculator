@@ -10,8 +10,8 @@ public class GeneralCalculations {
     private int initialAmount;
     private ArrayList<Expenses> expensesGeneral;    // Список расходов
     private ArrayList<Saving> savingsGeneral;       // Список сбережений
-    private double remainingAfterExpenses;          // Остаток после расходов
-    private double remainingAfterSavings;           // Остаток после сбережений
+    private int remainingAfterExpenses;          // Остаток после расходов
+    private int remainingAfterSavings;           // Остаток после сбережений
 
     public GeneralCalculations(int initialAmount) {
         this.salaryGeneral = initialAmount;
@@ -26,21 +26,23 @@ public class GeneralCalculations {
     }
 
 
-    public  void addSavingCalculate(String nameNewSaving, double newSaving){
+    public  void addSavingCalculate(String nameNewSaving, int newSaving){
         savingsGeneral.add(new Saving(newSaving, nameNewSaving));
 
-        double totalPercentage = savingsGeneral.stream()
-                .mapToDouble(Saving::getNewSavings).sum();
+        int totalPercentage = savingsGeneral.stream()
+                .mapToInt(Saving::getNewSavings).sum();
 
-        if (totalPercentage > 100) {
+        if (totalPercentage > 100.0) {
             System.out.println("Внимание! Общий процент сбережений превышает 100%!");
         }
+
+        remainingAfterExpenses = salaryGeneral;
 
         // Вычисляем остаток после сбережений
         remainingAfterSavings = remainingAfterExpenses;
         for (Saving saving : savingsGeneral) {
-            double amount = remainingAfterExpenses * saving.getNewSavings() / 100;
-            remainingAfterSavings -= amount;
+            int amount = (remainingAfterExpenses * saving.getNewSavings() / 100);
+            remainingAfterExpenses -= amount;
         }
     }
 
@@ -52,11 +54,11 @@ public class GeneralCalculations {
         return salaryGeneral;
     }
 
-    public double getRemainingAfterExpenses() {
+    public int getRemainingAfterExpenses() {
         return remainingAfterExpenses;
     }
 
-    public double getRemainingAfterSavings() {
+    public int getRemainingAfterSavings() {
         return remainingAfterSavings;
     }
 
@@ -66,11 +68,12 @@ public class GeneralCalculations {
             System.out.println(expense);
         }
         System.out.println("\nОстаток после затрат: " + getSalaryGeneral());
-        System.out.println("\nСбережения: " + getRemainingAfterExpenses() + "\nСписок сбережений: ");
+        System.out.println("\nСписок сбережений: ");
         for (Saving saving : savingsGeneral) {
             System.out.println(saving);
+            System.out.println(remainingAfterSavings);
         }
-        System.out.println("\nОстаток после расходов: " + getRemainingAfterSavings());
+        System.out.println("\nОстаток после расходов и сбережений: " + getRemainingAfterExpenses());
     }
 
 

@@ -13,8 +13,8 @@ public class Main {
         generalCalculations.addExpenseCalculate("Еда", 3000);
         generalCalculations.addExpenseCalculate("Кредиты", 20000);
         generalCalculations.addExpenseCalculate("Комуналка", 5000);
-        generalCalculations.addSavingCalculate("Ремонт", 70.0);
-        generalCalculations.addSavingCalculate("Отпуск", 20.0);
+        generalCalculations.addSavingCalculate("Ремонт", 60);
+        generalCalculations.addSavingCalculate("Отпуск", 40);
         generalCalculations.printGeneralCalculations();
 
 

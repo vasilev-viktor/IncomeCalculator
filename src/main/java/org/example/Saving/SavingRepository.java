@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 public class SavingRepository {
 
-    private double initialSaving;
+    private int initialSaving;
     private ArrayList<Saving> savingList;
 
-    public void savingRepository(double initialSaving) {
+    public void savingRepository(int initialSaving) {
         this.initialSaving = initialSaving;
         this.savingList = new ArrayList<>();
     }
 
-    public void addSaving(String nameNewSaving, double newSaving) {
+    public void addSaving(String nameNewSaving, int newSaving) {
         savingList.add(new Saving(newSaving, nameNewSaving)); // Добавляю в список
     }
 
