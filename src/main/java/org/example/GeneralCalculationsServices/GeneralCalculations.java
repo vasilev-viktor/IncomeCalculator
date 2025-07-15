@@ -1,184 +1,174 @@
 package org.example.GeneralCalculationsServices;
 
+
 import org.example.Expenses.Expenses;
+import org.example.Expenses.ExpensesRepository;
 import org.example.Saving.Saving;
+import org.example.Saving.SavingRepository;
+import org.example.User.UserRepository;
+import org.example.User.Users;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class GeneralCalculations {
-    private int salaryGeneral;                      // Общая зарплата
-    private int initialAmount;
-    private ArrayList<Expenses> expensesGeneral;    // Список расходов
-    private ArrayList<Saving> savingsGeneral;       // Список сбережений
-    private int remainingAfterExpenses;          // Остаток после расходов
-    private int remainingAfterSavings;           // Остаток после сбережений
+// нужно потокобезопасное значение
 
-    public GeneralCalculations(int initialAmount) {
-        this.salaryGeneral = initialAmount;
-        this.initialAmount = initialAmount;
-        this.expensesGeneral = new ArrayList<>();
-        this.savingsGeneral = new ArrayList<>();
+
+    private ExpensesRepository expensesRepository = new ExpensesRepository();
+    private SavingRepository savingRepository = new SavingRepository();
+    private UserRepository userRepository = new UserRepository();
+
+    public void addExpense(String nameNewExpenses, int newExpenses) {
+        expensesRepository.addExpense(nameNewExpenses, newExpenses);
     }
 
-    public void addExpenseCalculate(String nameNewExpenses, int newExpenses){
-        expensesGeneral.add(new Expenses(newExpenses, nameNewExpenses));
-        salaryGeneral -= newExpenses;
+    // разделить на 2, класс где сначала заполняю список, другой метод считать(на вход список), результат вычислений будет список который нужно потом посчитать
+    public void addSaving(String nameNewSaving, int newSaving) {
+        savingRepository.addSaving(nameNewSaving, newSaving);
     }
 
+    public void addUsers(int salaryOriginal) {
+        userRepository.addUsersOriginal(salaryOriginal);
+    }
 
-    public  void addSavingCalculate(String nameNewSaving, int newSaving){
-        savingsGeneral.add(new Saving(newSaving, nameNewSaving));
-
-        int totalPercentage = savingsGeneral.stream()
-                .mapToInt(Saving::getNewSavings).sum();
-
-        if (totalPercentage > 100.0) {
-            System.out.println("Внимание! Общий процент сбережений превышает 100%!");
-        }
-
-        remainingAfterExpenses = salaryGeneral;
-
-        // Вычисляем остаток после сбережений
-        remainingAfterSavings = remainingAfterExpenses;
-        for (Saving saving : savingsGeneral) {
-            int amount = (remainingAfterExpenses * saving.getNewSavings() / 100);
-            remainingAfterExpenses -= amount;
+    public void subtractionOfExpenses() {
+        List<Expenses> expensesListExpenses = expensesRepository.getExpensesList();
+        List<Users> usersExpenses = userRepository.getUsersOriginalList();
+        for (Expenses expenses : expensesListExpenses) {
+            for (Users user : usersExpenses) {
+                int subtraction = user.getSalaryOriginal() - expenses.getNewExpenses();
+                user.setSalaryOriginal(subtraction);
+            }
         }
     }
 
-    public int getInitialAmountGeneral() {
-        return initialAmount;
-    }
+    public void calculationSaving() {
+        List<Users> usersSaving = userRepository.getUsersOriginalList();
+        List<Saving> savingsListSaving = savingRepository.getSavingList();
+        for (Saving saving : savingsListSaving) {
+            for (Users user : usersSaving) {
+                int calculationSaving = user.getSalaryOriginal() * saving.getNewSavings() / 100;
+                saving.setNewSavings(calculationSaving);
+                int subtractionSaving = user.getSalaryOriginal() - saving.getNewSavings();
+                user.setSalaryOriginal(subtractionSaving);
+            }
 
-    public int getSalaryGeneral() {
-        return salaryGeneral;
-    }
-
-    public int getRemainingAfterExpenses() {
-        return remainingAfterExpenses;
-    }
-
-    public int getRemainingAfterSavings() {
-        return remainingAfterSavings;
-    }
-
-    public  void printGeneralCalculations(){
-        System.out.println("\nЗарплата: " + getInitialAmountGeneral() + "\nСписок расходов: ");
-        for (Expenses expense : expensesGeneral) {
-            System.out.println(expense);
         }
-        System.out.println("\nОстаток после затрат: " + getSalaryGeneral());
-        System.out.println("\nСписок сбережений: ");
-        for (Saving saving : savingsGeneral) {
-            System.out.println(saving);
-            System.out.println(remainingAfterSavings);
-        }
-        System.out.println("\nОстаток после расходов и сбережений: " + getRemainingAfterExpenses());
-    }
 
+    }
 
 }
+// for (Saving saving : savingsGeneral) {
+//remainingAfterSavings = (salaryGeneral * saving.getNewSavings() / 100);
 
 
 
+// можно без гетеров и сетеров, можно через них, бежно без, главное объеянить зачем они
+// зависит от стиля команды, использовать гетеры в одном классе или нет, заложение логики в гетеры и сеттеры это плохая логика, делается ради инкопсуляции, почему в данном коде она не нужна.
+
+// как классы, медоды и переменные между собой взаимодействуют! - надо это осознать
+
+// фор ич ИЗУЧИТЬ!
+// отдельно добовление! отдельно потсчет
+
+// сингл тон
 
 
+// тред сейф
+// переменные класса должны быть константами
+// использовать логер вместо System.out.println, нужен подключаемый логер
+//метод СРП
+// 1 метод сохраняем в себе, другой на вычисление
+
+//синглтон - нет внедрения зависимости и контейнера класса. набор экземпляров класса. сервис = один объект. так как нет библиотек, можно сингл тон.
+//инстанс?
+
+// вопрос к собесу - геттеры и сеттеры как работают эти методы, как передаются
 
 
-
-
-
-
-//    public void calculation() {
-//        // Суммируем все расходы
-//        double totalExpenses = expensesGeneral.stream()
-//                .mapToDouble(Expenses::getNewExpenses).sum();
-//        // Вычисляем остаток после расходов
-//        remainingAfterExpenses = salaryGeneral - totalExpenses;
+//    private int amount;
+//    private int salaryGeneral;                      // Общая зарплата
+//    private final int initialAmount;// Список расходов
+//    private final ArrayList<Saving> savingsGeneral;       // Список сбережений
+//    private int remainingAfterExpenses;          // Остаток после расходов
+//    private int remainingAfterSavings;           // Остаток после сбережений
 //
-//        // Проверяем, чтобы сумма процентов не превышала 100%
-//        double totalPercentage = savingsGeneral.stream()
-//                .mapToDouble(Saving::getNewSavings).sum();
+//    public GeneralCalculations(int initialAmount) {
+//        this.salaryGeneral = initialAmount;
+//        this.initialAmount = initialAmount;
+//        this.savingsGeneral = new ArrayList<>();
+//    }
+
+
+// новый метод где считать будет все
+//int totalPercentage = savingsGeneral.stream()
+//        .mapToInt(Saving::getNewSavings).sum();
 //
-//        if (totalPercentage > 100) {
-//            System.out.println("Внимание! Общий процент сбережений превышает 100%!");
+//        if (totalPercentage > 100.0) {
+//        System.out.println("Внимание! Общий процент сбережений превышает 100%!");
 //        }
 //
-//        /** @param
-//         * stream() - преобразует коллекцию в поток данных (последовательность элементов, поддерживающих различные операции)
-//         * mapToDouble - преобразует каждый элемент потока в double
-//         * (Expenses::getNewExpenses) - method reference - компактный синтаксис для передачи аргумента
-//         * sum() - Суммирует все элементы потока double, возвращает общую сумму в виде примитивного потока double
-//         * */
+//                // Вычисляем сбережения
+//                for (Saving saving : savingsGeneral) {
+//remainingAfterSavings = (salaryGeneral * saving.getNewSavings() / 100);
+//            amount = remainingAfterSavings;
+//        }
+//        System.out.println(remainingAfterSavings);
+//       amount = remainingAfterSavings;
+//
+// нужен массив
+
+
+//    public int getAmount() {
+//        return amount;
+//    }
+//
+//    public int getInitialAmountGeneral() {
+//        return initialAmount;
+//    }
+//
+//    public int getSalaryGeneral() {
+//        return salaryGeneral;
+//    }
+//
+//    public int getRemainingAfterExpenses() {
+//        return remainingAfterExpenses;
+//    }
+//
+//    public int getRemainingAfterSavings() {
+//        return remainingAfterSavings;
+//    }
 //
 //
-//        // Вычисляем остаток после сбережений
-//        remainingAfterSavings = remainingAfterExpenses;
+//    public  void printGeneralCalculations(){
+//        System.out.println("\nЗарплата: " + getInitialAmountGeneral() + "\nСписок расходов: ");
+//        for (Expenses expense : expensesRepository.getExpensesList()) {
+//            System.out.println(expense);
+//        }
+//        System.out.println("\nОстаток после затрат: " + getSalaryGeneral());
+//        System.out.println("\nСписок сбережений: ");
 //        for (Saving saving : savingsGeneral) {
-//            double amount = remainingAfterExpenses * saving.getNewSavings() / 100;
-//            remainingAfterSavings -= amount;
-//        }
-//    }
+//            System.out.println(saving);
+//            System.out.println(getRemainingAfterSavings());
+//            System.out.println(amount);
 //
-//    @Override
-//    public String toString() {
-//        return "GeneralCalculations{" +
-//                "salaryGeneral=" + salaryGeneral +
-//                ", expensesGeneral=" + expensesGeneral +
-//                ", savingsGeneral=" + savingsGeneral +
-//                ", remainingAfterExpenses=" + remainingAfterExpenses +
-//                ", remainingAfterSavings=" + remainingAfterSavings +
-//                '}';
+//        }
+//        System.out.println("\nОстаток после расходов и сбережений: " + getRemainingAfterExpenses());
 //    }
 
 
-//    int salary;
-//    int balance;
-//    int newExpensesGeneral;
-//    String nameNewExpensesGeneral;
-//
-//    public GeneralCalculations(int salary)  {
-//        this.salary = salary;
-//    }
-//
-//
-//    public void setSalary(int salary) {
-//        this.salary = salary;
-//    }
-//
-//    public int getSalary() {
-//        return salary;
-//    }
-//
-//
-//    // Класс subtractionBasic отражает все расходы, можно вписать сумму и узнать сколько останется после всех расходов
-//    public void subtractionBasic(Expenses expenses) {
-//
-//        int amountConsumables = expenses.getNewExpenses();
-//        String nameNewExpensesSubtractionBasic = expenses.getNameNewExpenses();
-//        System.out.println("Посчитать");
-//        System.out.println("Сумма поступила: " + salary);
-//        System.out.println("Сумма всех ежемесячных расходников " + nameNewExpensesSubtractionBasic + ": "
-//                + amountConsumables);
-//        if (amountConsumables <= salary) {
-//            balance = salary - amountConsumables;
-//            System.out.println("Остаток зарплаты за вычетом расходников: " + balance);
-//        }
-//    }
-//
-//    // Метод отвечает за вычисление на ремонт и сбережения
-//    public void repairInterest() {
-//        if (balance > 0) {
-//            double interestRepair = 0.7;
-//            double savingsForRepairs = interestRepair * balance;
-//            double remainder = balance - savingsForRepairs;
-//            System.out.println("Отложить 70% от остатка на ремонт: " + savingsForRepairs);
-//            System.out.println("Отложить остальное на общие сбережения: " + remainder);
-//        } else {
-//            System.out.println("Отложить не получится, оставшиеся сумма: " + balance);
-//        }
-//
-//    }
+
+
+
+
+
+
+
+
+
+
 
 
 

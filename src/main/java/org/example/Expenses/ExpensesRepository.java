@@ -4,41 +4,27 @@ package org.example.Expenses;
 // неужна сортировка для того чтобы вывести на экран, например по сумме
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExpensesRepository {
 
-    private int salary;
-    private int initialSalary;
-    private ArrayList<Expenses> expensesList;
 
+    private final List<Expenses> expensesList = new ArrayList<>();
 
-    public void expensesList(int initialSalary) {
-        this.salary = initialSalary;
-        this.initialSalary = initialSalary;
-        this.expensesList = new ArrayList<>();
-    }
 
     public void addExpense(String nameNewExpenses, int newExpenses) {
         expensesList.add(new Expenses(newExpenses, nameNewExpenses)); // Добавляю в список
-//        salary -= newExpenses;
     }
 
-    // Возвращает текущий остаток зарплаты
-    public int getRemainingSalary() {
-        return salary;
-    }
-    // Возвращает введенной зарплаты
-    public int getInitialSalary() {
-        return initialSalary;
+    public List<Expenses> getExpensesList() {
+        return List.of(expensesList.toArray(new Expenses[0]));
     }
 
-    public void printExpenses() {
-        System.out.println("\nЗарплата: " + getInitialSalary() + "\nСписок расходов: ");
-        for (Expenses expense : expensesList) {
-            System.out.println(expense);
-        }
-        System.out.println("\nОстаток после расходов: " + getRemainingSalary());
-    }
+    // + еще 2 метеда, удалить и обновить
+
+    //нужна еще одна связка по пользователю (хранение ЗП) репозиторий и класс создания
+
+
 }
 
 

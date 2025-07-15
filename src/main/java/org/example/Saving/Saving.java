@@ -22,12 +22,9 @@ public class Saving {
         return nameNewSavings;
     }
 
-//    public void setNameNewSavings(String nameNewSavings) {
-//        this.nameNewSavings = nameNewSavings;
-//    }
 
     @Override
     public String toString() {
-        return "\n% " + newSavings + " " +nameNewSavings;
+        return "\n% " + newSavings + " " + nameNewSavings;
     }
 }
