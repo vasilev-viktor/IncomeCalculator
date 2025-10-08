@@ -3,8 +3,8 @@ package org.example.Expenses;
 public class Expenses {
 
 
-    int newExpenses;
-    String nameNewExpenses;
+   private int newExpenses;
+   private String nameNewExpenses;
 
 
     public Expenses(int newExpenses, String nameNewExpenses) {
@@ -28,6 +28,8 @@ public class Expenses {
     public void setNameNewExpenses(String nameNewExpenses) {
         this.nameNewExpenses = nameNewExpenses;
     }
+
+
 
     @Override
     public String toString() {

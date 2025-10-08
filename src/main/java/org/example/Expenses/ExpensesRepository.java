@@ -17,8 +17,11 @@ public class ExpensesRepository {
     }
 
     public List<Expenses> getExpensesList() {
-        return List.of(expensesList.toArray(new Expenses[0]));
+        return  new ArrayList<>(expensesList);
+//        return List.of(expensesList.toArray(new Expenses[0]));
     }
+
+
 
     // + еще 2 метеда, удалить и обновить
 

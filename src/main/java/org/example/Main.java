@@ -9,13 +9,14 @@ public class Main {
 
 
         GeneralCalculations generalCalculations = new GeneralCalculations();
-        generalCalculations.addUsers(128000);
+        generalCalculations.addUsers(128000, "Viktor");
         generalCalculations.addExpense("Еда", 3000);
         generalCalculations.addExpense("Кредиты", 20000);
         generalCalculations.addExpense("Комуналка", 5000);
         generalCalculations.addSaving("Ремонт", 60);
         generalCalculations.addSaving("Отпуск", 40);
 
+        generalCalculations.additionOfExpenses();
         generalCalculations.subtractionOfExpenses();
         generalCalculations.calculationSaving();
 

@@ -8,7 +8,6 @@ import org.example.Saving.SavingRepository;
 import org.example.User.UserRepository;
 import org.example.User.Users;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,9 +28,13 @@ public class GeneralCalculations {
         savingRepository.addSaving(nameNewSaving, newSaving);
     }
 
-    public void addUsers(int salaryOriginal) {
-        userRepository.addUsersOriginal(salaryOriginal);
+    public void addUsers(int salaryOriginal, String userName) {
+        userRepository.addUsersOriginal(salaryOriginal, userName);
     }
+
+    // сложить все расходы
+
+
 
     public void subtractionOfExpenses() {
         List<Expenses> expensesListExpenses = expensesRepository.getExpensesList();
@@ -43,6 +46,14 @@ public class GeneralCalculations {
             }
         }
     }
+
+    public void additionOfExpenses() {
+        List<Expenses> expensesListExpenses = expensesRepository.getExpensesList();
+        int totalAddition = expensesListExpenses.stream().mapToInt(Expenses::getNewExpenses).sum();
+        System.out.println("Total additional expenses: " + totalAddition);
+
+    }
+
 
     public void calculationSaving() {
         List<Users> usersSaving = userRepository.getUsersOriginalList();

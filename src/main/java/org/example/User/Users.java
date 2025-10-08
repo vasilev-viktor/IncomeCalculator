@@ -2,11 +2,21 @@ package org.example.User;
 
 public class Users {
 
+    private String userName;
     private int salaryOriginal;
 
 
-    public Users(int salaryOriginal) {
+    public Users(int salaryOriginal, String userName) {
         this.salaryOriginal = salaryOriginal;
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getSalaryOriginal() {
