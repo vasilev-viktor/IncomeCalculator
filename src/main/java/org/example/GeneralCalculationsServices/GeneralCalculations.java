@@ -32,8 +32,6 @@ public class GeneralCalculations {
         userRepository.addUsersOriginal(salaryOriginal, userName);
     }
 
-    // сложить все расходы
-
 
 
     public void subtractionOfExpenses() {
@@ -47,6 +45,7 @@ public class GeneralCalculations {
         }
     }
 
+    // сложить все расходы
     public void additionOfExpenses() {
         List<Expenses> expensesListExpenses = expensesRepository.getExpensesList();
         int totalAddition = expensesListExpenses.stream().mapToInt(Expenses::getNewExpenses).sum();
