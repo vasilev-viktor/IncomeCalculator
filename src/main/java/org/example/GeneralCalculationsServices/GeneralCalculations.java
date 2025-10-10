@@ -14,6 +14,8 @@ import java.util.List;
 public class GeneralCalculations {
 // нужно потокобезопасное значение
 
+    private int addingUpExpenses;
+    private int salaryAfterDeductionOfExpenses;
 
     private ExpensesRepository expensesRepository = new ExpensesRepository();
     private SavingRepository savingRepository = new SavingRepository();
@@ -32,25 +34,34 @@ public class GeneralCalculations {
         userRepository.addUsersOriginal(salaryOriginal, userName);
     }
 
+    // сложить все расходы
 
 
+    // вычесть из ЗП расходы (additionOfExpenses())
     public void subtractionOfExpenses() {
-        List<Expenses> expensesListExpenses = expensesRepository.getExpensesList();
         List<Users> usersExpenses = userRepository.getUsersOriginalList();
-        for (Expenses expenses : expensesListExpenses) {
-            for (Users user : usersExpenses) {
-                int subtraction = user.getSalaryOriginal() - expenses.getNewExpenses();
-                user.setSalaryOriginal(subtraction);
-            }
+        for (Users user : usersExpenses) {
+            salaryAfterDeductionOfExpenses = user.getSalaryOriginal() - addingUpExpenses;
+            System.out.println(salaryAfterDeductionOfExpenses);
+
+
+//        List<Expenses> expensesListExpenses = expensesRepository.getExpensesList();
+//        List<Users> usersExpenses = userRepository.getUsersOriginalList();
+//        for (Expenses expenses : expensesListExpenses) {
+//            for (Users user : usersExpenses) {
+//                int subtraction = user.getSalaryOriginal() - expenses.getNewExpenses();
+//                user.setSalaryOriginal(subtraction);
+//            }
+//        }
         }
     }
 
+// нужно addingUpExpenses следать геттер и сеттер в другом классе, чтобы в эту переменную
     // сложить все расходы
     public void additionOfExpenses() {
         List<Expenses> expensesListExpenses = expensesRepository.getExpensesList();
-        int totalAddition = expensesListExpenses.stream().mapToInt(Expenses::getNewExpenses).sum();
-        System.out.println("Total additional expenses: " + totalAddition);
-
+        addingUpExpenses = expensesListExpenses.stream().mapToInt(Expenses::getNewExpenses).sum();
+        System.out.println("Total additional expenses: " + addingUpExpenses);
     }
 
 

@@ -30,7 +30,6 @@ public class Expenses {
     }
 
 
-
     @Override
     public String toString() {
         return  "\nСумма: " + newExpenses +

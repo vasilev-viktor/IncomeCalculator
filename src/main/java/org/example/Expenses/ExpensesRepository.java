@@ -18,7 +18,6 @@ public class ExpensesRepository {
 
     public List<Expenses> getExpensesList() {
         return  new ArrayList<>(expensesList);
-//        return List.of(expensesList.toArray(new Expenses[0]));
     }
 
 
