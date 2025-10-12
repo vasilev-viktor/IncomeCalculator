@@ -4,6 +4,7 @@ package org.example.Expenses;
 // неужна сортировка для того чтобы вывести на экран, например по сумме
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ExpensesRepository {
@@ -14,6 +15,21 @@ public class ExpensesRepository {
 
     public void addExpense(String nameNewExpenses, int newExpenses) {
         expensesList.add(new Expenses(newExpenses, nameNewExpenses)); // Добавляю в список
+    }
+
+    public void correctionExpense(String nameNewExpenses, int newExpenses) {
+
+
+    }
+
+    public void deleteExpense(String nameNewExpenses) {
+       Iterator<Expenses> iterator = expensesList.iterator();
+       while (iterator.hasNext()) {
+           Expenses expenses = iterator.next();
+           if (expenses.getNameNewExpenses().equals(nameNewExpenses)) {
+               expensesList.remove(expenses);
+           }
+       }
     }
 
     public List<Expenses> getExpensesList() {
