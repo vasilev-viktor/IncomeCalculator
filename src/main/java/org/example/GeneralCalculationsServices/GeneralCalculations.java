@@ -33,6 +33,14 @@ public class GeneralCalculations {
         userRepository.addUsersOriginal(salaryOriginal, userName);
     }
 
+    public void deleteExpense(String nameNewExpenses){
+        expensesRepository.deleteExpense(nameNewExpenses);
+    }
+
+    public void correctionExpense (String oldName, String nameNewExpenses, int newExpenses) {
+        expensesRepository.correctionExpense(oldName, nameNewExpenses, newExpenses);
+    }
+
     // вычесть из ЗП расходы (additionOfExpenses())
     public void subtractionOfExpenses() {
         List<Users> usersExpenses = userRepository.getUsersOriginalList();

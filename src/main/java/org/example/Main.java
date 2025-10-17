@@ -16,12 +16,14 @@ public class Main {
         generalCalculations.addSaving("Ремонт", 39);
         generalCalculations.addSaving("Отпуск", 46);
         generalCalculations.addSaving("Отпуск", 15);
+        generalCalculations.deleteExpense("Кредиты");
+        generalCalculations.correctionExpense("Комуналка", "комуналка", 1000);
+
 
 
         generalCalculations.additionOfExpenses();
         generalCalculations.subtractionOfExpenses();
         generalCalculations.calculationSaving();
-
 
 //        generalCalculations.printGeneralCalculations();
 
