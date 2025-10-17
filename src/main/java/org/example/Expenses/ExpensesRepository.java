@@ -6,6 +6,7 @@ package org.example.Expenses;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class ExpensesRepository {
 
@@ -17,19 +18,24 @@ public class ExpensesRepository {
         expensesList.add(new Expenses(newExpenses, nameNewExpenses)); // Добавляю в список
     }
 
-    public void correctionExpense(String nameNewExpenses, int newExpenses) {
-
+    public void correctionExpense(String oldName, String nameNewExpenses, int newExpenses) {
+        for (Expenses expenses : expensesList) {
+            if (expenses.getNameNewExpenses().equals(oldName)) {
+                expenses.setNameNewExpenses(nameNewExpenses);
+                expenses.setNewExpenses(newExpenses);
+            }
+        }
+        System.out.println("Старое значение: "+oldName + ", Новое имя расхода: " + nameNewExpenses + ", Новая сумма расхода: " + newExpenses);
 
     }
 
     public void deleteExpense(String nameNewExpenses) {
-       Iterator<Expenses> iterator = expensesList.iterator();
-       while (iterator.hasNext()) {
-           Expenses expenses = iterator.next();
-           if (expenses.getNameNewExpenses().equals(nameNewExpenses)) {
-               expensesList.remove(expenses);
-           }
-       }
+        for (Expenses expenses : expensesList) {
+            if (expenses.getNameNewExpenses().equals(nameNewExpenses)) {
+                expensesList.remove(expenses);
+            }
+        }
+        System.out.println("Удаленный расход: " + nameNewExpenses);
     }
 
     public List<Expenses> getExpensesList() {

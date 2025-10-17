@@ -17,6 +17,7 @@ public class Main {
         generalCalculations.addSaving("Отпуск", 46);
         generalCalculations.addSaving("Отпуск", 15);
         generalCalculations.deleteExpense("Кредиты");
+        generalCalculations.correctionExpense("Комуналка", "комуналка", 1000);
 
 
 
