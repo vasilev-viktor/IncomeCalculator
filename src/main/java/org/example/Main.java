@@ -9,15 +9,17 @@ public class Main {
 
 
         GeneralCalculations generalCalculations = new GeneralCalculations();
-        generalCalculations.addUsers(150000, "Viktor");
-        generalCalculations.addExpense("Еда", 3000);
-        generalCalculations.addExpense("Кредиты", 20000);
-        generalCalculations.addExpense("Комуналка", 5000);
-        generalCalculations.addSaving("Ремонт", 39);
-        generalCalculations.addSaving("Отпуск", 46);
-        generalCalculations.addSaving("Отпуск", 15);
-        generalCalculations.deleteExpense("Кредиты");
-        generalCalculations.correctionExpense("Комуналка", "комуналка", 1000);
+        generalCalculations.addUsers(200000, "Viktor");
+        generalCalculations.addExpense("Еда", 30000);
+        generalCalculations.addExpense("Остальные расходы (одежда)", 3000);
+        generalCalculations.addExpense("Комуналка", 3000);
+
+        generalCalculations.addSaving("Сбережения", 20);
+        generalCalculations.addSaving("Инвестиции", 10);
+        generalCalculations.addSaving("Ипотека (Досрочно)", 70);
+//        generalCalculations.deleteExpense("Кредиты");
+//        generalCalculations.correctionExpense("Комуналка", "комуналка", 1000);
+//        generalCalculations.correctionUser("Viktor", "Alena", 150000);
 
 
 
@@ -26,7 +28,6 @@ public class Main {
         generalCalculations.calculationSaving();
 
 //        generalCalculations.printGeneralCalculations();
-
 
 
     }

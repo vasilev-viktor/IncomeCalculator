@@ -10,17 +10,22 @@ public class Saving {
         this.nameNewSavings = nameNewSavings;
     }
 
-    public int getNewSavings() {
-        return newSavings;
-    }
-
     public void setNewSavings(int newSavings) {
         this.newSavings = newSavings;
+    }
+
+    public void setNameNewSavings(String nameNewSavings) {
+        this.nameNewSavings = nameNewSavings;
+    }
+
+    public int getNewSavings() {
+        return newSavings;
     }
 
     public String getNameNewSavings() {
         return nameNewSavings;
     }
+
 
 
     @Override

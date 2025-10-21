@@ -41,6 +41,22 @@ public class GeneralCalculations {
         expensesRepository.correctionExpense(oldName, nameNewExpenses, newExpenses);
     }
 
+    public void deleteSaving(String nameSaving){
+        savingRepository.deleteSaving(nameSaving);
+    }
+
+    public void deleteUser(String nameUser){
+        userRepository.deleteUser(nameUser);
+    }
+
+    public void correctionSaving(String oldName, String nameSaving, int newSaving){
+        savingRepository.correctionSaving(oldName, nameSaving, newSaving);
+    }
+
+    public void correctionUser(String oldName, String nameUser, int newUser){
+        userRepository.correctionUser(oldName, nameUser, newUser);
+    }
+
     // вычесть из ЗП расходы (additionOfExpenses())
     public void subtractionOfExpenses() {
         List<Users> usersExpenses = userRepository.getUsersOriginalList();
