@@ -1,4 +1,4 @@
-package org.example.User;
+package org.example.user;
 
 public class Users {
 
