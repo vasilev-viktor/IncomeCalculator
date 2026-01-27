@@ -1,7 +1,6 @@
-package org.example.Expenses;
+package org.example.expenses;
 
 public class Expenses {
-
 
    private int newExpenses;
    private String nameNewExpenses;
@@ -11,7 +10,6 @@ public class Expenses {
         this.newExpenses = newExpenses;
         this.nameNewExpenses = nameNewExpenses;
     }
-
 
     public int getNewExpenses() {
         return newExpenses;

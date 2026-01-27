@@ -1,12 +1,12 @@
-package org.example.GeneralCalculationsServices;
+package org.example.generalCalculationsServices;
 
 
-import org.example.Expenses.Expenses;
-import org.example.Expenses.ExpensesRepository;
-import org.example.Saving.Saving;
-import org.example.Saving.SavingRepository;
-import org.example.User.UserRepository;
-import org.example.User.Users;
+import org.example.expenses.Expenses;
+import org.example.expenses.ExpensesRepository;
+import org.example.saving.Saving;
+import org.example.saving.SavingRepository;
+import org.example.user.UserRepository;
+import org.example.user.Users;
 
 import java.util.List;
 

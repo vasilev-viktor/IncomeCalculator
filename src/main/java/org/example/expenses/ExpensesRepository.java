@@ -1,12 +1,10 @@
-package org.example.Expenses;
+package org.example.expenses;
 
 // нужно из него сделать сингл тон, отвечает за хранение, поиск, удаление, взаимодействие с БД
 // неужна сортировка для того чтобы вывести на экран, например по сумме
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class ExpensesRepository {
 

@@ -2,7 +2,7 @@ package org.example;
 
 //должно быть из сервиса
 
-import org.example.GeneralCalculationsServices.GeneralCalculations;
+import org.example.generalCalculationsServices.GeneralCalculations;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class Main {
 
         GeneralCalculations generalCalculations = new GeneralCalculations();
         generalCalculations.addUsers(200000, "Viktor");
-        generalCalculations.addExpense("Еда", 30000);
+        generalCalculations.addExpense("Еда", 4000);
         generalCalculations.addExpense("Остальные расходы (одежда)", 3000);
         generalCalculations.addExpense("Комуналка", 3000);
 

@@ -1,4 +1,4 @@
-package org.example.Saving;
+package org.example.saving;
 
 public class Saving {
 

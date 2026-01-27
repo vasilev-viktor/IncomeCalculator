@@ -1,7 +1,5 @@
-package org.example.User;
+package org.example.user;
 
-
-import org.example.Saving.Saving;
 
 import java.util.ArrayList;
 import java.util.List;
