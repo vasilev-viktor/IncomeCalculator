@@ -2,8 +2,8 @@ package org.example.saving;
 
 public class Saving {
 
-    int newSavings;
-    String nameNewSavings;
+    private int newSavings;
+    private String nameNewSavings;
 
     public Saving(int newSavings, String nameNewSavings) {
         this.newSavings = newSavings;
@@ -26,10 +26,8 @@ public class Saving {
         return nameNewSavings;
     }
 
-
-
     @Override
     public String toString() {
-        return "\n% " + newSavings + " " + nameNewSavings;
+        return "\nСбережения: " + newSavings + " " + nameNewSavings;
     }
 }
