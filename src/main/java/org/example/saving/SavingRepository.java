@@ -6,9 +6,7 @@ import java.util.List;
 
 public class SavingRepository {
 
-
     private final List<Saving> savingList = new ArrayList<>();
-
 
     public void addSaving(String nameNewSavings, int newSavings) {
         savingList.add(new Saving(newSavings, nameNewSavings)); // Добавляю в список

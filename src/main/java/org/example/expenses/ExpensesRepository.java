@@ -8,9 +8,7 @@ import java.util.List;
 
 public class ExpensesRepository {
 
-
     private final List<Expenses> expensesList = new ArrayList<>();
-
 
     public void addExpense(String nameNewExpenses, int newExpenses) {
         expensesList.add(new Expenses(newExpenses, nameNewExpenses)); // Добавляю в список
@@ -24,7 +22,6 @@ public class ExpensesRepository {
             }
         }
         System.out.println("Старое значение: "+oldName + ", Новое имя расхода: " + nameNewExpenses + ", Новая сумма расхода: " + newExpenses);
-
     }
 
     public void deleteExpense(String nameNewExpenses) {
@@ -39,14 +36,6 @@ public class ExpensesRepository {
     public List<Expenses> getExpensesList() {
         return  new ArrayList<>(expensesList);
     }
-
-
-
-    // + еще 2 метеда, удалить и обновить
-
-    //нужна еще одна связка по пользователю (хранение ЗП) репозиторий и класс создания
-
-
 }
 
 

@@ -5,7 +5,6 @@ public class Users {
     private String userName;
     private int salaryOriginal;
 
-
     public Users(int salaryOriginal, String userName) {
         this.salaryOriginal = salaryOriginal;
         this.userName = userName;
@@ -29,6 +28,6 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Зарплата: " + salaryOriginal;
+        return "Имя: " + userName + "\nЗарплата: " + salaryOriginal;
     }
 }

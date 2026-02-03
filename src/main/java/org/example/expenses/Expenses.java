@@ -5,7 +5,6 @@ public class Expenses {
    private int newExpenses;
    private String nameNewExpenses;
 
-
     public Expenses(int newExpenses, String nameNewExpenses) {
         this.newExpenses = newExpenses;
         this.nameNewExpenses = nameNewExpenses;
@@ -27,16 +26,8 @@ public class Expenses {
         this.nameNewExpenses = nameNewExpenses;
     }
 
-
     @Override
     public String toString() {
-        return  "\nСумма: " + newExpenses +
-                " Название: " + nameNewExpenses;
+        return "\nРасходы: " + newExpenses + " " + nameNewExpenses;
     }
-
-
 }
-
-// надо создать храниище данных
-// мап нужен чтобы создать
-// дто?
