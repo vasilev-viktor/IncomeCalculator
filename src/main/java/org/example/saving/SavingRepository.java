@@ -23,11 +23,7 @@ public class SavingRepository {
     }
 
     public void deleteSaving(String nameNewSaving) {
-        for (Saving saving : savingList) {
-            if (saving.getNameNewSavings().equals(nameNewSaving)) {
-                savingList.remove(saving);
-            }
-        }
+        savingList.removeIf(saving -> saving.getNameNewSavings().equals(nameNewSaving));
         System.out.println("Удаленное сбережение: " + nameNewSaving);
     }
 

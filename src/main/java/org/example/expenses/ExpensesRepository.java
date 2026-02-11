@@ -25,11 +25,7 @@ public class ExpensesRepository {
     }
 
     public void deleteExpense(String nameNewExpenses) {
-        for (Expenses expenses : expensesList) {
-            if (expenses.getNameNewExpenses().equals(nameNewExpenses)) {
-                expensesList.remove(expenses);
-            }
-        }
+        expensesList.removeIf(expenses -> expenses.getNameNewExpenses().equals(nameNewExpenses));
         System.out.println("Удаленный расход: " + nameNewExpenses);
     }
 

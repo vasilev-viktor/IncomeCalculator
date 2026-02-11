@@ -11,9 +11,6 @@ public class ValidationResult {
 
     // Метод для добавления ошибки
     public void addError(String fieldName, String massage) {
-        // computeIfAbsent: если для fieldName еще нет списка ошибок - создаем новый ArrayList
-        // если есть - возвращаем существующий список
-        // затем добавляем сообщение об ошибке в этот список
         errors.computeIfAbsent(fieldName, k -> new ArrayList<>()).add(massage);
     }
 

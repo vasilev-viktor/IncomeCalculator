@@ -23,11 +23,7 @@ public class UserRepository {
     }
 
     public void deleteUser(String nameNewUser) {
-        for (Users users : usersList) {
-            if (users.getUserName().equals(nameNewUser)) {
-                usersList.remove(users);
-            }
-        }
+        usersList.removeIf(users -> users.getUserName().equals(nameNewUser));
         System.out.println("Удаленный пользователь: " + nameNewUser);
     }
 
