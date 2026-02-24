@@ -7,11 +7,10 @@ import org.example.saving.Saving;
 import org.example.saving.SavingRepository;
 import org.example.user.UserRepository;
 import org.example.user.Users;
-import org.example.validation.ValidatorFactory;
 
 import java.util.List;
 
-public class GeneralCalculations {
+public class CalculationManager {
 
     private int addingUpExpenses;
     private int salaryAfterDeductionOfExpenses;
@@ -19,7 +18,6 @@ public class GeneralCalculations {
     private ExpensesRepository expensesRepository = new ExpensesRepository();
     private SavingRepository savingRepository = new SavingRepository();
     private UserRepository userRepository = new UserRepository();
-    private ValidatorFactory validatorFactory = new ValidatorFactory();
 
     public void addExpense(String nameNewExpenses, int newExpenses) {
         expensesRepository.addExpense(nameNewExpenses, newExpenses);

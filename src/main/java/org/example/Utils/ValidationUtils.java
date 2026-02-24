@@ -1,11 +1,18 @@
-package org.example.validation;
+package org.example.Utils;
+
+import org.example.validation.FieldValidator;
+import org.example.validation.ValidationResult;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ValidatorFactory {
+public final class ValidationUtils {
 
     private static final Map<String, FieldValidator> validators = new HashMap<>();
+
+    private ValidationUtils(){
+       throw new AssertionError("You are trying to create an instance of the final class");
+    }
 
     static {
         validators.put("mandatory", (field, value) -> {
@@ -30,10 +37,14 @@ public class ValidatorFactory {
         validators.put("max and min", (field, value) -> {
             ValidationResult resultMinMax = new ValidationResult();
             int valueInt = (Integer) value;
-            if (valueInt <= 0 || valueInt >= 10000000) {
+            if (valueInt < 0 || valueInt > 10000000) {
                 resultMinMax.addError(field, "Можно ввести в диапазоне от 0 до 10000000");
             }
             return resultMinMax;
         });
+    }
+
+    public static FieldValidator getValidator(String key) {
+        return validators.get(key);
     }
 }

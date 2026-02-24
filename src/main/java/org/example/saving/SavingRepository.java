@@ -1,15 +1,21 @@
 package org.example.saving;
 
 
+import org.example.Utils.ValidationUtils;
+import org.example.validation.ValidationResult;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class SavingRepository {
 
     private final List<Saving> savingList = new ArrayList<>();
 
     public void addSaving(String nameNewSavings, int newSavings) {
-        savingList.add(new Saving(newSavings, nameNewSavings)); // Добавляю в список
+        // добавиль валидацию туть, создать в ютилс статичную валидацию и добавить сюда,
+        // чтобы проходило через валидацию, выпадала ошибка или проходило дальше, так во всех репозиториях
+            savingList.add(new Saving(newSavings, nameNewSavings)); // Добавляю в список
     }
 
     public void correctionSaving(String oldName, String nameNewSaving, int newSaving) {
