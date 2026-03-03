@@ -28,6 +28,6 @@ public class Saving {
 
     @Override
     public String toString() {
-        return "\nСбережения: " + newSavings + " " + nameNewSavings;
+        return "\nСбережения: " + newSavings + " % " + nameNewSavings;
     }
 }

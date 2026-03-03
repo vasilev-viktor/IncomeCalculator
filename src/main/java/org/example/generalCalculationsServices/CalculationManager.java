@@ -59,7 +59,7 @@ public class CalculationManager {
         List<Expenses> expensesListExpenses = expensesRepository.getExpensesList();
         addingUpExpenses = expensesListExpenses.stream().mapToInt(Expenses::getNewExpenses).sum();
         userRepository.getUsersOriginalList().forEach(System.out::println);
-        System.out.println("\n//СУММА РАСХОДОВ: " + addingUpExpenses);
+        System.out.println("\n//СУММА РАСХОДОВ: " + addingUpExpenses + " руб.");
         expensesListExpenses.forEach(System.out::print);
     }
 
@@ -67,16 +67,29 @@ public class CalculationManager {
         List<Users> usersExpenses = userRepository.getUsersOriginalList();
         for (Users user : usersExpenses) {
             salaryAfterDeductionOfExpenses = user.getSalaryOriginal() - addingUpExpenses;
-            System.out.println();
-            System.out.println("\n//ОСТАЛОСЬ ПОСЛЕ РАСХОДОВ: " + salaryAfterDeductionOfExpenses);
+            if (salaryAfterDeductionOfExpenses >= 100) {
+                System.out.println();
+                System.out.println("\n//ОСТАЛОСЬ ПОСЛЕ РАСХОДОВ, ЭТИ СРЕДСТВА РАСПРЕДЕЛЯТСЯ В СБЕРЕЖЕНИЯ: " + salaryAfterDeductionOfExpenses + " руб.");
+            } else {
+                System.out.println("\nОстаток после расходов слишком мал для расчета сбережений: " + salaryAfterDeductionOfExpenses);
+            }
         }
     }
 
     public void calculationSaving() {
         List<Saving> savingListSaving = savingRepository.getSavingList();
+        int total = 0;
+        int sum = savingListSaving.stream().mapToInt(Saving::getNewSavings).sum();
         for (Saving saving : savingListSaving) {
-            int total = salaryAfterDeductionOfExpenses * saving.getNewSavings() / 100;
-            System.out.print(saving + " " + total);
+            if (salaryAfterDeductionOfExpenses >= 100) {
+                total = salaryAfterDeductionOfExpenses * saving.getNewSavings() / 100;
+                if (sum > 100) {
+                    System.out.print(" \n- Некорректное распределение по % Вы ввели " + sum + "%, нужно не больше 100%, скорректируйте распределение");
+                }
+            } else {
+                System.out.print(" \n- Остаток после расходов слишком мал для расчета: " + sum);
+            }
+            System.out.print(saving + " " + total + " руб.");
         }
     }
 }

@@ -9,17 +9,10 @@ public class Main {
 
 
         CalculationManager generalCalculations = new CalculationManager();
-        generalCalculations.addUsers(287000, "Viktor");
-        generalCalculations.addExpense("Еда", 30000);
-        generalCalculations.addExpense("Аренда квартиры", 70000);
-        generalCalculations.addExpense("Комуналка", 15000);
-        generalCalculations.addExpense("Спорт", 10000);
-        generalCalculations.addExpense("Разное (ДР, стол, подставка)", 4500);
-        generalCalculations.addExpense("Интернет", 100000001);
-        generalCalculations.addExpense("Чемоданы", 20000);
-        generalCalculations.addExpense("Кредит", 5000);
-        generalCalculations.addExpense("Планшет", 100000001);
-
+        generalCalculations.addUsers(1100000000, "Viktor");
+        generalCalculations.addExpense("!a", 1000000000);
+//        generalCalculations.addExpense("Шоппинг", 10000);
+//        generalCalculations.addExpense("Разные расходы", 3000);
 
         generalCalculations.addSaving("Доллары", 20);
         generalCalculations.addSaving("Инвестиции Витя", 10);
