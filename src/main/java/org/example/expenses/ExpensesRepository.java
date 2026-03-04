@@ -14,20 +14,20 @@ public class ExpensesRepository {
     private final List<Expenses> expensesList = new ArrayList<>();
 
     private ValidationResult validateExpense(String nameNewExpenses, int newExpenses) {
-        ValidationResult result = new ValidationResult();
-        ValidationUtils.validateProcessingErrors(result, "mandatory", "nameNewExpenses", nameNewExpenses);
-        ValidationUtils.validateProcessingErrors(result, "mandatory", "newExpenses", newExpenses);
-        ValidationUtils.validateProcessingErrors(result, "number", "newExpenses", newExpenses);
-        ValidationUtils.validateProcessingErrors(result, "int max and min", "newExpenses", newExpenses);
-        ValidationUtils.validateProcessingErrors(result, "string max and min", "nameNewExpenses", nameNewExpenses);
-        ValidationUtils.validateProcessingErrors(result, "allowed characters", "nameNewExpenses", nameNewExpenses);
-        return result;
+        ValidationResult resultExpenses = new ValidationResult();
+        ValidationUtils.validateProcessingErrors(resultExpenses, "mandatory", "nameNewExpenses", nameNewExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "mandatory", "newExpenses", newExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "number", "newExpenses", newExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "int max and min", "newExpenses", newExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "string max and min", "nameNewExpenses", nameNewExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "allowed characters", "nameNewExpenses", nameNewExpenses);
+        return resultExpenses;
     }
 
     public void addExpense(String nameNewExpenses, int newExpenses) {
-        ValidationResult validationResult = validateExpense(nameNewExpenses, newExpenses);
-        if (!validationResult.isValid()) {
-            throw new IllegalArgumentException("Validation failed: " + validationResult.getErrors());
+        ValidationResult validationResultExpense = validateExpense(nameNewExpenses, newExpenses);
+        if (!validationResultExpense.isValid()) {
+            throw new IllegalArgumentException("Validation failed: " + validationResultExpense.getErrors());
         }
         expensesList.add(new Expenses(newExpenses, nameNewExpenses)); // Добавляю в список
     }
