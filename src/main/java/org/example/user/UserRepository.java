@@ -1,6 +1,9 @@
 package org.example.user;
 
 
+import org.example.Utils.ValidationUtils;
+import org.example.validation.ValidationResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +11,22 @@ public class UserRepository {
 
     private final List<Users> usersList = new ArrayList<>();
 
+    private ValidationResult validateUser(int salaryOriginal, String userName) {
+        ValidationResult resultUser = new ValidationResult();
+        ValidationUtils.validateProcessingErrors(resultUser, "mandatory", "ИМЯ ПОЛЬЗОВАТЕЛЯ", userName);
+        ValidationUtils.validateProcessingErrors(resultUser, "mandatory", "СУММА ДОХОДА", salaryOriginal);
+        ValidationUtils.validateProcessingErrors(resultUser, "number", "СУММА ДОХОДА", salaryOriginal);
+        ValidationUtils.validateProcessingErrors(resultUser, "int max and min", "СУММА ДОХОДА", salaryOriginal);
+        ValidationUtils.validateProcessingErrors(resultUser, "string max and min", "ИМЯ ПОЛЬЗОВАТЕЛЯ", userName);
+        ValidationUtils.validateProcessingErrors(resultUser, "allowed characters", "ИМЯ ПОЛЬЗОВАТЕЛЯ", userName);
+        return resultUser;
+    }
+
     public void addUsersOriginal(int salaryOriginal, String userName) {
+        ValidationResult validationResultUser = validateUser(salaryOriginal, userName);
+        if (!validationResultUser.isValid()) {
+            System.out.println("Validation failed: " + validationResultUser.getErrors());
+        }
         usersList.add(new Users(salaryOriginal, userName)); // Добавляю в список
     }
 
@@ -23,11 +41,7 @@ public class UserRepository {
     }
 
     public void deleteUser(String nameNewUser) {
-        for (Users users : usersList) {
-            if (users.getUserName().equals(nameNewUser)) {
-                usersList.remove(users);
-            }
-        }
+        usersList.removeIf(users -> users.getUserName().equals(nameNewUser));
         System.out.println("Удаленный пользователь: " + nameNewUser);
     }
 
