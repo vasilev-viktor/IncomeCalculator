@@ -1,8 +1,5 @@
 package org.example.expenses;
 
-// нужно из него сделать сингл тон, отвечает за хранение, поиск, удаление, взаимодействие с БД
-// неужна сортировка для того чтобы вывести на экран, например по сумме
-
 import org.example.Utils.ValidationUtils;
 import org.example.validation.ValidationResult;
 
@@ -15,19 +12,19 @@ public class ExpensesRepository {
 
     private ValidationResult validateExpense(String nameNewExpenses, int newExpenses) {
         ValidationResult resultExpenses = new ValidationResult();
-        ValidationUtils.validateProcessingErrors(resultExpenses, "mandatory", "nameNewExpenses", nameNewExpenses);
-        ValidationUtils.validateProcessingErrors(resultExpenses, "mandatory", "newExpenses", newExpenses);
-        ValidationUtils.validateProcessingErrors(resultExpenses, "number", "newExpenses", newExpenses);
-        ValidationUtils.validateProcessingErrors(resultExpenses, "int max and min", "newExpenses", newExpenses);
-        ValidationUtils.validateProcessingErrors(resultExpenses, "string max and min", "nameNewExpenses", nameNewExpenses);
-        ValidationUtils.validateProcessingErrors(resultExpenses, "allowed characters", "nameNewExpenses", nameNewExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "mandatory", "НАЗВАНИЕ РАСХОДА", nameNewExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "mandatory", "СУММА РАСХОДА", newExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "number", "СУММА РАСХОДА", newExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "int max and min", "СУММА РАСХОДА", newExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "string max and min", "НАЗВАНИЕ РАСХОДА", nameNewExpenses);
+        ValidationUtils.validateProcessingErrors(resultExpenses, "allowed characters", "НАЗВАНИЕ РАСХОДА", nameNewExpenses);
         return resultExpenses;
     }
 
     public void addExpense(String nameNewExpenses, int newExpenses) {
         ValidationResult validationResultExpense = validateExpense(nameNewExpenses, newExpenses);
         if (!validationResultExpense.isValid()) {
-            throw new IllegalArgumentException("Validation failed: " + validationResultExpense.getErrors());
+            System.out.println("Validation failed: " + validationResultExpense.getErrors());
         }
         expensesList.add(new Expenses(newExpenses, nameNewExpenses)); // Добавляю в список
     }

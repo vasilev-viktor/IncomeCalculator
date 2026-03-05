@@ -39,7 +39,7 @@ public final class ValidationUtils {
         validators.put("int max and min", (field, value) -> {
             ValidationResult intResultMinMax = new ValidationResult();
             int valueInt = (Integer) value;
-            if (valueInt < 0 || valueInt > 100000) {
+            if (valueInt < 0 || valueInt > 1000000) {
                 intResultMinMax.addError(field, "Можно ввести в диапазоне от 0 до 10000000");
             }
             return intResultMinMax;
@@ -49,7 +49,7 @@ public final class ValidationUtils {
             ValidationResult stringResultMinMax = new ValidationResult();
             String valueString = (String) value;
             if (value != null && !value.toString().trim().isEmpty()) {
-                if (valueString.length() <= 3 || valueString.length() >= 20) {
+                if (valueString.length() <= 1 || valueString.length() >= 20) {
                     stringResultMinMax.addError(field, "Можно ввести не меньше 2 и не больше 20 символов");
                 }
             }

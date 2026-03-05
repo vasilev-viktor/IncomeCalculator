@@ -15,9 +15,9 @@ public class CalculationManager {
     private int addingUpExpenses;
     private int salaryAfterDeductionOfExpenses;
 
-    private ExpensesRepository expensesRepository = new ExpensesRepository();
-    private SavingRepository savingRepository = new SavingRepository();
-    private UserRepository userRepository = new UserRepository();
+    private final ExpensesRepository expensesRepository = new ExpensesRepository();
+    private final SavingRepository savingRepository = new SavingRepository();
+    private final UserRepository userRepository = new UserRepository();
 
     public void addExpense(String nameNewExpenses, int newExpenses) {
         expensesRepository.addExpense(nameNewExpenses, newExpenses);

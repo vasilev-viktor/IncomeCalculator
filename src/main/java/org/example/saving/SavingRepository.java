@@ -1,6 +1,5 @@
 package org.example.saving;
 
-
 import org.example.Utils.ValidationUtils;
 import org.example.validation.ValidationResult;
 
@@ -13,19 +12,19 @@ public class SavingRepository {
 
     private ValidationResult validateSaving(String nameNewSavings, int newSavings) {
         ValidationResult resultSaving = new ValidationResult();
-        ValidationUtils.validateProcessingErrors(resultSaving, "mandatory", "nameNewSavings", nameNewSavings);
-        ValidationUtils.validateProcessingErrors(resultSaving, "mandatory", "newSavings", newSavings);
-        ValidationUtils.validateProcessingErrors(resultSaving, "number", "newSavings", newSavings);
-        ValidationUtils.validateProcessingErrors(resultSaving, "int max and min", "newSavings", newSavings);
-        ValidationUtils.validateProcessingErrors(resultSaving, "string max and min", "nameNewSavings", nameNewSavings);
-        ValidationUtils.validateProcessingErrors(resultSaving, "allowed characters", "nameNewSavings", nameNewSavings);
+        ValidationUtils.validateProcessingErrors(resultSaving, "mandatory", "НАЗВАНИЕ СБЕРЕЖЕНИЯ", nameNewSavings);
+        ValidationUtils.validateProcessingErrors(resultSaving, "mandatory", "СУММА СБЕРЕЖЕНИЯ", newSavings);
+        ValidationUtils.validateProcessingErrors(resultSaving, "number", "СУММА СБЕРЕЖЕНИЯ", newSavings);
+        ValidationUtils.validateProcessingErrors(resultSaving, "int max and min", "СУММА СБЕРЕЖЕНИЯ", newSavings);
+        ValidationUtils.validateProcessingErrors(resultSaving, "string max and min", "НАЗВАНИЕ СБЕРЕЖЕНИЯ", nameNewSavings);
+        ValidationUtils.validateProcessingErrors(resultSaving, "allowed characters", "НАЗВАНИЕ СБЕРЕЖЕНИЯ", nameNewSavings);
         return resultSaving;
     }
 
     public void addSaving(String nameNewSavings, int newSavings) {
         ValidationResult validationResultSaving = validateSaving(nameNewSavings, newSavings);
         if (!validationResultSaving.isValid()) {
-            throw new IllegalArgumentException("Validation failed: " + validationResultSaving.getErrors());
+            System.out.println("Validation failed: " + validationResultSaving.getErrors());
         }
         savingList.add(new Saving(newSavings, nameNewSavings));
     }

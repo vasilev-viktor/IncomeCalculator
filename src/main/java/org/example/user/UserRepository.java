@@ -13,19 +13,19 @@ public class UserRepository {
 
     private ValidationResult validateUser(int salaryOriginal, String userName) {
         ValidationResult resultUser = new ValidationResult();
-        ValidationUtils.validateProcessingErrors(resultUser, "mandatory", "userName", userName);
-        ValidationUtils.validateProcessingErrors(resultUser, "mandatory", "salaryOriginal", salaryOriginal);
-        ValidationUtils.validateProcessingErrors(resultUser, "number", "salaryOriginal", salaryOriginal);
-        ValidationUtils.validateProcessingErrors(resultUser, "int max and min", "salaryOriginal", salaryOriginal);
-        ValidationUtils.validateProcessingErrors(resultUser, "string max and min", "userName", userName);
-        ValidationUtils.validateProcessingErrors(resultUser, "allowed characters", "userName", userName);
+        ValidationUtils.validateProcessingErrors(resultUser, "mandatory", "ИМЯ ПОЛЬЗОВАТЕЛЯ", userName);
+        ValidationUtils.validateProcessingErrors(resultUser, "mandatory", "СУММА ДОХОДА", salaryOriginal);
+        ValidationUtils.validateProcessingErrors(resultUser, "number", "СУММА ДОХОДА", salaryOriginal);
+        ValidationUtils.validateProcessingErrors(resultUser, "int max and min", "СУММА ДОХОДА", salaryOriginal);
+        ValidationUtils.validateProcessingErrors(resultUser, "string max and min", "ИМЯ ПОЛЬЗОВАТЕЛЯ", userName);
+        ValidationUtils.validateProcessingErrors(resultUser, "allowed characters", "ИМЯ ПОЛЬЗОВАТЕЛЯ", userName);
         return resultUser;
     }
 
     public void addUsersOriginal(int salaryOriginal, String userName) {
         ValidationResult validationResultUser = validateUser(salaryOriginal, userName);
         if (!validationResultUser.isValid()) {
-            throw new IllegalArgumentException("Validation failed: " + validationResultUser.getErrors());
+            System.out.println("Validation failed: " + validationResultUser.getErrors());
         }
         usersList.add(new Users(salaryOriginal, userName)); // Добавляю в список
     }
