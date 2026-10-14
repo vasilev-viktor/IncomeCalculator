@@ -1,7 +1,7 @@
 package org.example.user;
 
 
-import org.example.Utils.ValidationUtils;
+import org.example.utils.ValidationUtils;
 import org.example.validation.ValidationResult;
 
 import java.util.ArrayList;
