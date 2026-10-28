@@ -22,12 +22,12 @@ public class UserRepository {
         return resultUser;
     }
 
-    public void addUsersOriginal(int salaryOriginal, String userName) {
+    public void addUsersOriginal(int id, int salaryOriginal, String userName) {
         ValidationResult validationResultUser = validateUser(salaryOriginal, userName);
         if (!validationResultUser.isValid()) {
             System.out.println("Validation failed: " + validationResultUser.getErrors());
         }
-        usersList.add(new Users(salaryOriginal, userName)); // Добавляю в список
+        usersList.add(new Users(id, userName, salaryOriginal)); // Добавляю в список
     }
 
     public void correctionUser(String oldName, String nameNewUser, int newUser) {

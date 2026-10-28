@@ -19,6 +19,22 @@ public class CalculationManager {
     private final SavingRepository savingRepository = new SavingRepository();
     private final UserRepository userRepository = new UserRepository();
 
+    public int getAddingUpExpenses() {
+        return addingUpExpenses;
+    }
+
+    public void setAddingUpExpenses(int addingUpExpenses) {
+        this.addingUpExpenses = addingUpExpenses;
+    }
+
+    public int getSalaryAfterDeductionOfExpenses() {
+        return salaryAfterDeductionOfExpenses;
+    }
+
+    public void setSalaryAfterDeductionOfExpenses(int salaryAfterDeductionOfExpenses) {
+        this.salaryAfterDeductionOfExpenses = salaryAfterDeductionOfExpenses;
+    }
+
     public void addExpense(String nameNewExpenses, int newExpenses) {
         expensesRepository.addExpense(nameNewExpenses, newExpenses);
     }
@@ -27,8 +43,8 @@ public class CalculationManager {
         savingRepository.addSaving(nameNewSaving, newSaving);
     }
 
-    public void addUsers(int salaryOriginal, String userName) {
-        userRepository.addUsersOriginal(salaryOriginal, userName);
+    public void addUsers(int id, int salaryOriginal, String userName) {
+        userRepository.addUsersOriginal(id, salaryOriginal, userName);
     }
 
     public void deleteExpense(String nameNewExpenses) {

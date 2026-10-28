@@ -3,17 +3,19 @@ package org.example;
 //должно быть из сервиса
 
 import org.example.generalCalculationsServices.CalculationManager;
+import org.example.user.UserDaoImpl;
+import org.example.user.Users;
 
 public class Main {
     public static void main(String[] args) {
 
+        UserDaoImpl userDao = new UserDaoImpl();
         CalculationManager generalCalculations = new CalculationManager();
-        generalCalculations.addUsers(256000, "Viktor");
+        userDao.save(new Users(0,"Viktor", 200000));
         generalCalculations.addExpense("Еда", 30000);
         generalCalculations.addExpense("Аренда", 70000);
         generalCalculations.addExpense("Квартплата", 9000);
         generalCalculations.addExpense("Валдберис", 8000);
-        generalCalculations.addExpense("Возврат на счет", 47000);
         generalCalculations.addExpense("Еда сегодня", 3000);
         generalCalculations.addExpense("Поход", 10000);
         generalCalculations.addExpense("Танцы", 2000);
@@ -31,6 +33,7 @@ public class Main {
         generalCalculations.additionOfExpenses();
         generalCalculations.subtractionOfExpenses();
         generalCalculations.calculationSaving();
+
     }
 }
 

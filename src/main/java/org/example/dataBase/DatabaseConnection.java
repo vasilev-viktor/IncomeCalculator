@@ -1,7 +1,10 @@
 package org.example.dataBase;
 
+import org.example.user.Users;
+
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DataTruncation;
@@ -13,23 +16,19 @@ import java.util.Properties;
 import static java.lang.String.format;
 
 public class DatabaseConnection {
-
+    // рай виф ресурсес
     private static Connection connection;
 
     private static final Properties properties = new Properties();
 
     static {
-        try {
-            InputStream inputStream = DatabaseConnection.class.getClassLoader().getResourceAsStream("database.properties");
-
+        try (InputStream inputStream = DatabaseConnection.class.getClassLoader().getResourceAsStream("database.properties")){
             if (inputStream == null) {
-                System.err.println("application.properties не найден!");
+                throw new IllegalStateException("database.properties не найден!");
             }
             properties.load(inputStream);
-            inputStream.close();
-
-        } catch (Exception e) {
-            System.err.println("Ошибка загрузки application.properties");
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка загрузки database.properties", e);
         }
     }
 
@@ -61,10 +60,9 @@ public class DatabaseConnection {
             rowSet.getPassword();
 
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new RuntimeException ("Не удалось подключиться к базе данных: " + getUrl() + " (пользователь БД: " + getUsername() + e);
         }
         return connection;
     }
-
 }
 

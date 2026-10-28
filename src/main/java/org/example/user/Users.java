@@ -2,10 +2,12 @@ package org.example.user;
 
 public class Users {
 
+    private int id;
     private String userName;
     private int salaryOriginal;
 
-    public Users(int salaryOriginal, String userName) {
+    public Users(int id,String userName, int salaryOriginal) {
+        this.id = id;
         this.salaryOriginal = salaryOriginal;
         this.userName = userName;
     }
@@ -24,6 +26,14 @@ public class Users {
 
     public void setSalaryOriginal(int salaryOriginal) {
         this.salaryOriginal = salaryOriginal;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
