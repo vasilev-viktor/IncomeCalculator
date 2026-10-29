@@ -36,3 +36,11 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### IntelliJ: настройки IDE и кэш подключений к БД ###
+.idea/**/*.xml
+.idea/dataSources/
+*.meta
+
+### Локальные настройки БД (логин/пароль) ###
+src/main/resources/database.properties

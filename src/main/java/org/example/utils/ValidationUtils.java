@@ -1,4 +1,4 @@
-package org.example.Utils;
+package org.example.utils;
 
 import org.example.validation.FieldValidator;
 import org.example.validation.ValidationResult;
@@ -39,7 +39,7 @@ public final class ValidationUtils {
         validators.put("int max and min", (field, value) -> {
             ValidationResult intResultMinMax = new ValidationResult();
             int valueInt = (Integer) value;
-            if (valueInt < 0 || valueInt > 1000000) {
+            if (valueInt < 0 || valueInt > 10000000) {
                 intResultMinMax.addError(field, "Можно ввести в диапазоне от 0 до 10000000");
             }
             return intResultMinMax;
